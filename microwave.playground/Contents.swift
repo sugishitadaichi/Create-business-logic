@@ -30,54 +30,38 @@ class MicroWave {
         case pizza
     }
     
-    func warmFood(type: warmType) -> Bool {
+    func warmFood(type: WarmType) -> Bool {
         var isWarmable = false
         switch type {
             
         case .rice:
-            isWarmable = riceWatt >= watt
+            isWarmable = riceWatt <= watt && riceWarmTime <= warmtime
         case .pasta:
-            isWarmable = pastaWatt >= watt
+            isWarmable = pastaWatt <= watt && pastaWarmTime <= warmtime
         case .pizza:
-            isWarmable = pizzaWatt >= watt
+            isWarmable = pizzaWatt <= watt && pizzaWarmTime <= warmtime
         }
         return isWarmable
     }
-    
-    func warmFoodTime(type: warmType) -> Bool {
-        var isWarmtimeable = false
-        switch type {
-            
-        case .rice:
-            isWarmtimeable = riceWarmTime >= warmtime
-        case .pasta:
-            isWarmtimeable = pastaWarmTime >= warmtime
-        case .pizza:
-            isWarmtimeable = pizzaWarmTime >= warmtime
-        }
-        return isWarmtimeable
-    }
-    
-    }
+
 
 let microwave = MicroWave()
-microwave.watt = 400
-microwave.warmtime = 10
+microwave.watt = 500
+microwave.warmtime = 20
 
-let isWarmable = microwave.warmFood(type: .rice)
-let isWarmtimeable = microwave.warmFoodTime(type: .rice)
-print(isWarmable)
-print(isWarmtimeable)
+let canWarmFood = microwave.warmFood(type: .rice)
+print(canWarmFood)
 
-if isWarmable {
+if canWarmFood {
     print("現在のW数は\(microwave.watt)Wです。")
-} else if isWarmable == false {
+} else if canWarmFood == false {
     print("現在のW数は\(microwave.watt)Wで、温めできません。")
 }
 
-if isWarmtimeable {
+if canWarmFood {
     print("現在の温め時間は\(microwave.warmtime)秒です。")
-} else if isWarmtimeable == false {
+} else if canWarmFood == false {
     print("現在の温め時間は\(microwave.warmtime)秒で、温めできません。")
 }
+
 
