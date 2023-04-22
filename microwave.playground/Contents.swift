@@ -24,7 +24,7 @@ class MicroWave {
     var pastaWarmTime = 20
     var pizzaWarmTime = 30
     
-    enum warmType {
+    enum WarmType {
         case rice
         case pasta
         case pizza
@@ -43,11 +43,15 @@ class MicroWave {
         }
         return isWarmable
     }
+    
+    init(watt: Int, warmtime: Int) {
+        self.watt = watt
+        self.warmtime = warmtime
+    }
+}
 
 
-let microwave = MicroWave()
-microwave.watt = 500
-microwave.warmtime = 20
+let microwave = MicroWave(watt: 500, warmtime: 20)
 
 let canWarmFood = microwave.warmFood(type: .rice)
 print(canWarmFood)
