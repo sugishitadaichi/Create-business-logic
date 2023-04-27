@@ -36,19 +36,17 @@ class SlotMachine {
             //当たりとハズレの場合の処理を定義
             //　当たり→当たりと表示される＋マシーンのコイン在庫を300減らす
             //　ハズレ→ハズレと表示される＋マシーンのコイン在庫は変化しない
-                if leftView == rightView && rightView == middleView {
-                    print("BigBonus！300枚払出しされます")
-                    coinStock -= 300
-                    print("コインの在庫数は\(coinStock)枚です")
-                }else {
-                    print("ハズレです")
-                    coinStock -= 0
-                    print("コインの在庫数は\(coinStock)枚です")
+        if leftView == rightView && rightView == middleView {
+            print("BigBonus！300枚払出しされます")
+            coinStock -= 300
+            print("コインの在庫数は\(coinStock)枚です")
+        }else {
+            print("ハズレです")
+            print("コインの在庫数は\(coinStock)枚です")
                 }
             
         }else {
             print("コインが足りません")
-                coinStock += 0
             print("コインの在庫数は\(coinStock)枚です")
         }
         
